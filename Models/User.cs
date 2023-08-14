@@ -8,7 +8,7 @@
         public string Email { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public Boolean UserActive { get; set; }
+        public Boolean UserActive { get; set; }=true;
         public List<Playlist> Playlists { get; set; }
         public DateTime? CreatedAt { get; set; }
 
