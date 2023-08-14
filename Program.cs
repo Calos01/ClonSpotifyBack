@@ -1,3 +1,8 @@
+using ClonSpotifyBack.ContextBD;
+using Microsoft.EntityFrameworkCore;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +11,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//DbContext
+builder.Services.AddDbContext<SpotifyDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion")));
+
+//AutoMapper
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 
