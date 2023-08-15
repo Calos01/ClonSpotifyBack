@@ -32,6 +32,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 //Repository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+//cors
+builder.Services.AddCors(options => options.AddPolicy("AllowWebapp",
+                                    builder => builder.AllowAnyOrigin()
+                                                    .AllowAnyHeader()
+                                                    .AllowAnyMethod()));
+
+
 
 var app = builder.Build();
 
@@ -41,7 +48,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowWebapp");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
