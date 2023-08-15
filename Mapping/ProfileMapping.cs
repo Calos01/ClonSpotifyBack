@@ -9,9 +9,11 @@ namespace ClonSpotifyBack.Mapping
         public ProfileMapping()
         {
             CreateMap<User,UserDTO>().ReverseMap();
+            CreateMap<User,RegistroDTO>().ReverseMap();
             CreateMap<Music,MusicDTO>().ReverseMap();
             CreateMap<Playlist,PlaylistDTO>().ReverseMap();
             CreateMap<Genere,GenereDTO>().ReverseMap();
+
         }
     }
 }
